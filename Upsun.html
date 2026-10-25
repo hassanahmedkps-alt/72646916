@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Upsun – Hire freelancers. Find work.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f4f7fb;--surface:#fff;--ink:#12263f;--muted:#5b6b80;--line:#d9e1ec;--accent:#2b4eff;--accent-ink:#fff;--hi:#ffd84d;--hi-ink:#12263f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1626;--surface:#15223a;--ink:#eaf0fa;--muted:#9aabc3;--line:#263753;--accent:#7a92ff;--accent-ink:#0d1626}}
+:root[data-theme="dark"]{--bg:#0d1626;--surface:#15223a;--ink:#eaf0fa;--muted:#9aabc3;--line:#263753;--accent:#7a92ff;--accent-ink:#0d1626}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font:800 24px "Bricolage Grotesque",sans-serif;letter-spacing:-.5px}
+.logo b{background:var(--hi);color:var(--hi-ink);padding:0 6px;border-radius:6px;margin-right:2px}
+nav{display:flex;gap:18px;align-items:center;font-weight:500}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:10px 18px;font-weight:700}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hero{padding:48px 0 36px}
+h1{font-size:clamp(38px,7vw,72px);font-weight:800;letter-spacing:-2px;max-width:14ch}
+.hero p{font-size:19px;color:var(--muted);max-width:52ch;margin:18px 0 26px}
+.search{display:flex;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:8px;max-width:640px}
+.search input{flex:1;border:0;background:transparent;color:var(--ink);font:inherit;padding:8px 10px;min-width:0}
+.stats{display:flex;gap:28px;margin-top:22px;color:var(--muted);flex-wrap:wrap}
+.stats strong{color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:22px;margin-right:4px}
+section{padding:34px 0}
+h2{font-size:clamp(26px,4vw,38px);letter-spacing:-1px;margin-bottom:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 14px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.jobs{display:grid;gap:12px}
+.job{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px;display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center}
+.job h3{font-size:20px}
+.job .meta{color:var(--muted);font-size:14px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 8px;font-size:13px}
+.budget{font:800 22px "Bricolage Grotesque",sans-serif;text-align:right}
+.empty{padding:28px;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+.pros{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.pro{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px}
+.av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font:800 18px "Bricolage Grotesque",sans-serif;background:var(--hi);color:var(--hi-ink);margin-bottom:10px}
+.pro h3{font-size:18px}.pro p{margin:2px 0 8px;color:var(--muted);font-size:14px}
+.rate{font-weight:700}
+form.post{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:12px;max-width:640px}
+label{display:grid;gap:4px;font-weight:500;font-size:14px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:9px 11px;width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+dialog{border:0;border-radius:16px;background:var(--surface);color:var(--ink);padding:22px;width:min(480px,92vw)}
+dialog::backdrop{background:rgba(10,18,32,.6)}
+dialog form{display:grid;gap:12px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+footer{border-top:1.5px solid var(--line);padding:24px 0;color:var(--muted);font-size:14px;margin-top:20px}
+@media (max-width:600px){nav a{display:none}.job{grid-template-columns:1fr}.budget{text-align:left}.row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo"><b>Up</b>sun</div>
+  <nav><a href="#jobs">Find work</a><a href="#talent">Hire talent</a><a href="#post">Post a job</a><button class="btn ghost" id="login">Log in</button></nav>
+</header>
+
+<main>
+<div class="hero">
+  <h1>Hire great freelancers. Find real work.</h1>
+  <p>Upsun connects clients with developers, designers and writers. Free to join, no fees to post a job.</p>
+  <div class="search" role="search">
+    <input id="q" type="search" placeholder="Search jobs, e.g. React, logo, translation" aria-label="Search jobs">
+    <button class="btn" id="go">Search jobs</button>
+  </div>
+  <div class="stats"><span><strong id="sj">0</strong>open jobs</span><span><strong>6</strong>featured freelancers</span><span><strong>0%</strong>posting fee</span></div>
+</div>
+
+<section id="jobs">
+  <h2>Open jobs</h2>
+  <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+  <div class="jobs" id="list" aria-live="polite"></div>
+</section>
+
+<section id="talent">
+  <h2>Featured freelancers</h2>
+  <div class="pros" id="pros"></div>
+</section>
+
+<section id="post">
+  <h2>Post a job</h2>
+  <form class="post" id="postForm">
+    <label>Job title<input name="title" required maxlength="80" placeholder="Build a landing page for my bakery"></label>
+    <div class="row">
+      <label>Category<select name="cat"></select></label>
+      <label>Budget (USD)<input name="budget" type="number" min="5" required placeholder="250"></label>
+    </div>
+    <label>Skills (comma separated)<input name="skills" placeholder="Next.js, Tailwind"></label>
+    <button class="btn" type="submit">Publish job</button>
+  </form>
+</section>
+</main>
+<footer>© 2026 Upsun. Built with Next.js, Tailwind CSS and Supabase in mind; this page is a working prototype with sample data.</footer>
+</div>
+
+<dialog id="dlg">
+  <form method="dialog" id="applyForm">
+    <h3 id="dt" style="font-size:22px"></h3>
+    <label>Your name<input id="an" required></label>
+    <label>Proposal<textarea id="ap" rows="4" required placeholder="Why you are the right person for this job"></textarea></label>
+    <div class="row"><button class="btn ghost" value="cancel" formnovalidate>Cancel</button><button class="btn" id="send" value="ok">Send proposal</button></div>
+  </form>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const CATS=["Development","Design","Writing","Marketing"];
+let jobs=[
+ {t:"Build a Next.js dashboard with Supabase auth",c:"Development",b:600,s:["Next.js","Supabase"],w:"2 hours ago"},
+ {t:"Logo and brand kit for a coffee roaster",c:"Design",b:300,s:["Branding","Illustrator"],w:"5 hours ago"},
+ {t:"Write 10 SEO blog posts about solar energy",c:"Writing",b:450,s:["SEO","Blogging"],w:"Yesterday"},
+ {t:"Set up Google Ads for an online clothing store",c:"Marketing",b:350,s:["Google Ads","Analytics"],w:"Yesterday"},
+ {t:"Fix mobile layout bugs in a React Native app",c:"Development",b:200,s:["React Native","CSS"],w:"2 days ago"}
+];
+const pros=[["Ayesha K.","Full-stack developer","Next.js, Node","$35/hr"],["Bilal R.","UI/UX designer","Figma, Webflow","$28/hr"],["Sara M.","Content writer","SEO, Copywriting","$18/hr"],["Hamza T.","Mobile developer","React Native","$32/hr"],["Zainab A.","Brand designer","Logos, Print","$25/hr"],["Omar S.","Growth marketer","Ads, Email","$30/hr"]];
+let cat="All",q="";
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2400)}
+function chips(){$("#chips").innerHTML=["All",...CATS].map(c=>`<button class="chip" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join("")}
+function render(){
+ const f=jobs.filter(j=>(cat==="All"||j.c===cat)&&(j.t+" "+j.s.join(" ")).toLowerCase().includes(q.toLowerCase()));
+ $("#sj").textContent=jobs.length;
+ $("#list").innerHTML=f.length?f.map((j,i)=>`<article class="job"><div><h3>${esc(j.t)}</h3><div class="meta">${j.c} · Posted ${j.w}</div><div class="tags">${j.s.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></div><div><div class="budget">$${j.b}</div><button class="btn" data-i="${jobs.indexOf(j)}">Apply</button></div></article>`).join(""):`<div class="empty">No jobs match your search. Try another keyword or category, or post the job yourself below.</div>`;
+}
+$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;cat=b.dataset.c;chips();render()});
+$("#go").onclick=()=>{q=$("#q").value;render();$("#jobs").scrollIntoView({behavior:"smooth"})};
+$("#q").addEventListener("keydown",e=>{if(e.key==="Enter")$("#go").click()});
+let cur=0;
+$("#list").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;cur=+b.dataset.i;$("#dt").textContent="Apply: "+jobs[cur].t;$("#dlg").showModal()});
+$("#applyForm").addEventListener("submit",e=>{if(e.submitter&&e.submitter.value==="ok"){toast("Proposal sent to the client");$("#applyForm").reset()}});
+$("#postForm").addEventListener("submit",e=>{e.preventDefault();const d=new FormData(e.target);
+ jobs.unshift({t:d.get("title"),c:d.get("cat"),b:+d.get("budget"),s:d.get("skills").split(",").map(x=>x.trim()).filter(Boolean),w:"just now"});
+ e.target.reset();cat="All";q="";chips();render();toast("Job published");$("#jobs").scrollIntoView({behavior:"smooth"})});
+$("#login").onclick=()=>toast("Login arrives with Supabase Auth");
+$("#postForm select").innerHTML=CATS.map(c=>`<option>${c}</option>`).join("");
+$("#pros").innerHTML=pros.map(p=>`<div class="pro"><div class="av">${p[0][0]}</div><h3>${p[0]}</h3><p>${p[1]}<br>${p[2]}</p><span class="rate">${p[3]}</span></div>`).join("");
+chips();render();
+</script>
+</body>
+</html>
